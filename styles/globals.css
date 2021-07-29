@@ -294,20 +294,6 @@ tbody tr:nth-child(even) {
 .green{ background-color: rgb(64, 157, 64);}
 .black{ background-color: #010209;}
 
-.alert{
-  font-size: 1.2em;
-  font-weight: 700;
-}
-.alert-success{
-  
-  color: rgb(85, 138, 85);
-}
-.alert-error{
-  color: rgb(235, 67, 67);
-}
-.alert-warning{
-  color: rgb(153, 160, 9);
-}
 
 @media All  and (min-width:641px) and (max-width:1025px)
 {
