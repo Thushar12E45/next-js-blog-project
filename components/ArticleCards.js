@@ -16,12 +16,12 @@ export default function ArticleCards({ article, handleDelete, errorMessage }) {
     handleDelete(article.id, article.title);
   };
 
-  const imagePath = `/images/uploads/${article.id}.jpeg`;
+  const imagePath = `https://mixd-blog.herokuapp.com/images/${article.id}.jpeg`;
   return (
     <div className="article-section">
       <div>
         <div className="img-container">
-          <Image src={imagePath} height={256} width={300} />
+          <Image src={imagePath} height={256} width={300} layout="intrinsic" />
         </div>
 
         <h3>
@@ -37,20 +37,20 @@ export default function ArticleCards({ article, handleDelete, errorMessage }) {
         </span>
         &nbsp;|&nbsp;
         <span> {article.userTable.name} </span>
+        {localStorage.getItem('isLogged') === 'true' ? (
+          <div>
+            <button className="span-btn" type="button" name="edit" onClick={(e) => editArticle(e)}>
+              <span> Edit </span>
+            </button>
+            |
+            <button className="span-btn" type="button" name="delete" onClick={(e) => deleteArticle(e)}>
+              <span> Delete </span>
+            </button>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
-      {localStorage.getItem('isLogged') === 'true' ? (
-        <div>
-          <button className="span-btn" type="button" name="edit" onClick={(e) => editArticle(e)}>
-            <span> Edit </span>
-          </button>
-          |
-          <button className="span-btn" type="button" name="delete" onClick={(e) => deleteArticle(e)}>
-            <span> Delete </span>
-          </button>
-        </div>
-      ) : (
-        ''
-      )}
     </div>
   );
 }

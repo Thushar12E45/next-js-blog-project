@@ -1,15 +1,22 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import Cookies from 'universal-cookie';
+import router, { useRouter } from 'next/router';
+// import { mutate } from 'swr';
 
 const handleLogout = () => {
   const cookies = new Cookies();
   cookies.remove('jwtToken');
   cookies.remove('userId');
   localStorage.setItem('isLogged', false);
+  router.push(`/`);
+};
+const handleHomeRoute = () => {
   window.location.reload();
 };
 export default function Header() {
+  const Router = useRouter();
+
   return (
     <>
       <Head>
@@ -30,8 +37,15 @@ export default function Header() {
         </h1>
         <div className="navigation">
           <span className="nav-alink">
-            <Link href="/">Home</Link>
+            {Router.asPath !== '/' ? (
+              <Link href="/">Home</Link>
+            ) : (
+              <button type="button" onClick={handleHomeRoute}>
+                Home
+              </button>
+            )}
           </span>
+
           {localStorage.getItem('isLogged') === 'true' ? (
             <>
               <span className="nav-alink">

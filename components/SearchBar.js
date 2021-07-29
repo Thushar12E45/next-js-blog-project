@@ -1,11 +1,20 @@
 import { FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
+import useSWR from 'swr';
 
 export default function SearchBar({ searchData, handleSearch }) {
   const [keyword, setKeyword] = useState(() => searchData.keyword);
   const [author, setAuthor] = useState(() => searchData.author);
   const [sortType, setSortType] = useState(() => searchData.sortType);
 
+  const url = 'https://mixd-blog.herokuapp.com/api/authorList';
+
+  const { data, error } = useSWR(url);
+
+  if (error) return <div>Failed to fetch author list</div>;
+  if (!data) return <div> </div>;
+
+  console.log(data);
   const handleSearchClick = async (event) => {
     event.preventDefault();
     handleSearch({
@@ -36,23 +45,22 @@ export default function SearchBar({ searchData, handleSearch }) {
           </span>
         </button>
 
-        <input
-          type="text"
-          name="author"
+        <select
           id="author"
+          name="author"
           className="search-input"
-          placeholder="Search by author"
-          defaultValue={author}
+          value={author}
           onChange={(e) => {
             setAuthor(e.target.value);
           }}
-        />
-
-        <button type="submit" className="search-icon">
-          <span>
-            <FaSearch />
-          </span>
-        </button>
+        >
+          <option>Search by author</option>
+          {data.map((authorData) => (
+            <option key={authorData.id} defaultValue={authorData.name}>
+              {authorData.name}
+            </option>
+          ))}
+        </select>
 
         <div className="sort">
           <label htmlFor="sortType">
@@ -62,7 +70,7 @@ export default function SearchBar({ searchData, handleSearch }) {
               name="sortType"
               value="desc"
               defaultChecked={searchData.sortType === 'desc'}
-              onChange={() => setSortType('desc')}
+              onClick={() => setSortType('desc')}
             />{' '}
             Latest
             <input
@@ -70,7 +78,7 @@ export default function SearchBar({ searchData, handleSearch }) {
               name="sortType"
               value="asc"
               defaultChecked={searchData.sortType === 'asc'}
-              onChange={() => setSortType('asc')}
+              onClick={() => setSortType('asc')}
             />{' '}
             Oldest
           </label>

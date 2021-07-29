@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 export default function ArticleInputForm({ article }) {
   const Router = useRouter();
-
+  const checkLocation = Router.pathname === '/user/edit/[id]';
   return (
     <>
       <div className="form-group ">
@@ -13,14 +13,14 @@ export default function ArticleInputForm({ article }) {
           id="title"
           className="input-form"
           placeholder="Enter your title here"
-          defaultValue={Router.pathname === '/user/edit/[id]' ? article.title : ''}
+          defaultValue={checkLocation ? article.title : ''}
         />
       </div>
       <div>
         <label htmlFor="img" className="img-upload">
-          {Router.pathname === '/user/edit/[id]' ? 'Update ' : 'Upload '}
+          {checkLocation ? 'Update ' : 'Upload '}
           image :
-          <input type="file" id="img" name="img" accept="image/*" className="img-upload" />
+          <input type="file" id="img" name="img" accept="image/*" className="img-upload" required={!checkLocation} />
         </label>
       </div>
       <div className="form-group">
@@ -31,7 +31,7 @@ export default function ArticleInputForm({ article }) {
           id="markdown"
           className="input-form markdown "
           placeholder="Write your article( in markdown )"
-          defaultValue={Router.pathname === '/user/edit/[id]' ? article.markdown : ''}
+          defaultValue={checkLocation ? article.markdown : ''}
         />
       </div>
     </>

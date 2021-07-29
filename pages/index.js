@@ -1,6 +1,5 @@
 import useSWR from 'swr';
 import { useState } from 'react';
-import Cookies from 'universal-cookie';
 import Header from '../components/MainHeader';
 import ArticleGrid from '../components/ArticleGrid';
 import SearchBar from '../components/SearchBar';
@@ -17,6 +16,7 @@ export default function Home() {
 
   const handleSearch = ({ author, keyword, sortType }) => {
     setSearchData({ keyword, author, sortType });
+
     setUrl(`https://mixd-blog.herokuapp.com/api/search?keyword=${keyword}&author=${author}&sortType=${sortType}`);
   };
 
