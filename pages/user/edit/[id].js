@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import router from 'next/router';
 import Link from 'next/link';
 import Cookies from 'universal-cookie';
+import { toast } from 'react-toastify';
 import { getAllArticlesId, getArticleById } from '../../../lib/fetchData';
 import Header from '../../../components/Header';
 import ArticleInputForm from '../../../components/ArticleInputForm';
@@ -9,21 +9,30 @@ import ArticleInputForm from '../../../components/ArticleInputForm';
 export default function EditArticle({ article }) {
   const editTheArticle = async (event) => {
     event.preventDefault();
+
     const cookies = new Cookies();
     const token = cookies.get('jwtToken');
+    const file = event.target.img.files[0];
+
+    const formData = new FormData();
+    formData.append('title', event.target.title.value);
+    formData.append('markdown', event.target.markdown.value);
+    if (file) {
+      formData.append('img', file);
+    }
     const submittedData = await fetch(`https://mixd-blog.herokuapp.com/api/posts/${article.id}`, {
-      body: JSON.stringify({
-        title: event.target.title.value,
-        markdown: event.target.markdown.value,
-      }),
+      body: formData,
       headers: {
         Authorization: token,
-        'Content-Type': 'application/json',
       },
       method: 'PUT',
     });
     const editedArticle = await submittedData.json();
     router.push(`/posts/${editedArticle.id}`);
+    toast.success(`Article ${editedArticle.title} updated successfully`, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 5000,
+    });
   };
   return (
     <>
