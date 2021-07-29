@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Cookies from 'universal-cookie';
 import router, { useRouter } from 'next/router';
-// import { mutate } from 'swr';
 
 const handleLogout = () => {
   const cookies = new Cookies();
