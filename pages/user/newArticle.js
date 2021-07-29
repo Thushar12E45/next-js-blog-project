@@ -44,8 +44,8 @@ export default function NewArticle() {
             <button type="submit" className="btn black ">
               Publish
             </button>
-            <Link href="/" className="abutton grey">
-              <a>Cancel</a>
+            <Link href="/">
+              <a className="abutton grey">Cancel</a>
             </Link>
           </div>
         </form>

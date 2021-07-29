@@ -45,8 +45,8 @@ export default function EditArticle({ article }) {
             <button type="submit" className="btn black ">
               Update
             </button>
-            <Link href="/" className="abutton grey">
-              <a>Cancel</a>
+            <Link href="/">
+              <a className="abutton grey">Cancel</a>
             </Link>
           </div>
         </form>
