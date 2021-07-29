@@ -2,6 +2,8 @@ import Image from 'next/image';
 import marked from 'marked';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
+import { FaArrowLeft } from 'react-icons/fa';
+import Link from 'next/link';
 import Header from '../../components/MainHeader';
 
 export default function Article() {
@@ -31,6 +33,14 @@ export default function Article() {
           <Image src={imagePath} height={256} width={1000} />
         </div>
         <p dangerouslySetInnerHTML={{ __html: marked(article.markdown) }} />
+        <Link href="/">
+          <a className="center">
+            <span>
+              <FaArrowLeft />
+            </span>{' '}
+            &nbsp; Back to home page
+          </a>
+        </Link>
       </div>
     </>
   );
