@@ -1,0 +1,33 @@
+
+
+.navigation{
+  display: flex;
+  font-size: 1.5em;
+  margin-top: 15px;
+}
+.navigation button{
+  border: none;
+  font-weight: 500;
+  font-size: 1em;
+}
+.navigation a:hover,.navigation button:hover{
+  margin-top: 1px;
+  text-decoration: underline;
+  text-decoration-thickness:4px ;
+}
+.nav-alink{ 
+  margin-top: 1em;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+@media All and (max-width:640px)
+{
+  .logo, .left-side{
+    display: none;
+  }
+  .navigation{
+    margin-top: 0;
+    flex-direction: column;
+  }
+}

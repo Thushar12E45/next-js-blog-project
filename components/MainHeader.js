@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Cookies from 'universal-cookie';
 import router, { useRouter } from 'next/router';
+import styles from './Header.module.css';
 
 const handleLogout = () => {
   const cookies = new Cookies();
@@ -29,13 +30,15 @@ export default function Header() {
         <title> Mixd </title>
         <link rel="icon" href="/images/logo.svg" type="image/icon type" />
       </Head>
+
       <header>
         <h1>
           {' '}
-          <img src="/images/logo.svg" className="logo" alt="A logo" width="50px" /> <Link href="/"> MIXD</Link>
+          <img src="/images/logo.svg" className={styles.logo} alt="A logo" width="50px" /> <Link href="/"> MIXD</Link>
         </h1>
-        <div className="navigation">
-          <span className="nav-alink">
+
+        <div className={styles.navigation}>
+          <span className={styles.navAlink}>
             {Router.asPath !== '/' ? (
               <Link href="/">Home</Link>
             ) : (
@@ -47,11 +50,11 @@ export default function Header() {
 
           {localStorage.getItem('isLogged') === 'true' ? (
             <>
-              <span className="nav-alink">
+              <span className={styles.navAlink}>
                 <Link href="/user/newArticle"> New Article </Link>
               </span>
 
-              <span className="nav-alink">
+              <span className={styles.navAlink}>
                 <button type="button" onClick={handleLogout}>
                   {' '}
                   Logout{' '}
@@ -60,12 +63,12 @@ export default function Header() {
             </>
           ) : (
             <>
-              <span className="nav-alink">
+              <span className={styles.navAlink}>
                 <Link href="/user/login">
                   <a>Log In </a>
                 </Link>
               </span>
-              <span className="nav-alink">
+              <span className={styles.navAlink}>
                 <Link href="/user/register">
                   <a>Register </a>
                 </Link>
