@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import router from 'next/router';
-import useSWR from 'swr';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import Header from '../../components/Header';
 
 export default function Register() {
@@ -11,7 +11,7 @@ export default function Register() {
     password: '',
     confirmPassword: '',
   });
-  const [errorMessage, setErrorMessage] = useState('');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ export default function Register() {
     if (userDetails.success) {
       router.push('/user/login');
     } else {
-      setErrorMessage(userDetails[0].msg);
+      toast.error(userDetails[0].msg, { position: toast.POSITION.TOP_CENTER, autoClose: 5000 });
     }
   };
 
@@ -50,14 +50,19 @@ export default function Register() {
         <img src="/images/registerImage.png" alt="Image of a coder working" className="left-side" />
 
         <div className="register right-side">
-          <div className="alert alert-error  " role="alert">
-            {errorMessage}
-          </div>
+          
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="form-group ">
               <label htmlFor="name">
                 Name
-                <input type="name" id="name" name="name" className="form-control login-form" defaultValue={user.name} />
+                <input
+                  type="name"
+                  id="name"
+                  name="name"
+                  className="form-control login-form"
+                  defaultValue={user.name}
+                  required
+                />
               </label>
             </div>
 
@@ -70,6 +75,7 @@ export default function Register() {
                   name="email"
                   className="form-control login-form"
                   defaultValue={user.email}
+                  required
                 />{' '}
               </label>
             </div>
@@ -83,6 +89,7 @@ export default function Register() {
                   name="password"
                   className="form-control login-form"
                   defaultValue={user.password}
+                  required
                 />
               </label>
             </div>
@@ -96,6 +103,7 @@ export default function Register() {
                   name="confirmPassword"
                   className="form-control login-form"
                   defaultValue={user.confirmPassword}
+                  required
                 />
               </label>
             </div>

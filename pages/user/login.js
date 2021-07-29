@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import useSWR from 'swr';
 import Cookies from 'universal-cookie';
 import router from 'next/router';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import Header from '../../components/Header';
 
 export default function Login() {
@@ -11,12 +11,12 @@ export default function Login() {
     password: '',
   });
 
-  const [errorMessage, setErrorMessage] = useState('');
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const email = e.target.email.value;
     const password = e.target.password.value;
+
     setUser({ email, password });
     const response = await fetch('https://mixd-blog.herokuapp.com/api/login', {
       body: JSON.stringify({
@@ -37,7 +37,7 @@ export default function Login() {
 
       router.push('/');
     } else {
-      setErrorMessage(userDetails.msg);
+      toast.error(userDetails.msg, { position: toast.POSITION.TOP_CENTER, autoClose: 5000 });
     }
   };
   return (
@@ -49,9 +49,6 @@ export default function Login() {
         <img src="/images/loginImage.png" alt="Image of a coder working" className="left-side" />
 
         <div className="right-side login">
-          <div className="alert alert-error  " role="alert">
-            {errorMessage}
-          </div>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="form-group  ">
               <label htmlFor="email">
@@ -63,6 +60,7 @@ export default function Login() {
                   name="email"
                   className="form-control  login-form"
                   defaultValue={user.email}
+                  required
                 />
               </label>
             </div>
@@ -77,6 +75,7 @@ export default function Login() {
                   name="password"
                   className="form-control login-form"
                   defaultValue={user.email}
+                  required
                 />
               </label>
             </div>
