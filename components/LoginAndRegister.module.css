@@ -1,0 +1,61 @@
+.pageDivide{
+  background-color: white;
+  display: flex;
+}
+.rightSide,.leftSide{
+  margin: 1em;
+  width: 50%;
+}
+.login,.register{
+  margin-top: 50px;
+  width: 30%;
+}
+
+.loginForm,.registerForm {
+  width: 100%;
+  border:none;
+  border-bottom: 1px solid black;
+  font-size: 1em;
+  margin-bottom: 1em;
+  background-color: white;
+  height: 2em;
+}
+.btn,.abutton
+{
+  margin-left: 1em;
+  padding: 0.5em 2em;
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 1.1em;
+  border: 1px solid;
+  border-radius: 0.5em;
+}
+.blue{ background-color: rgb(11, 112, 220);}
+.grey{ background-color: grey;}
+.green{ background-color: rgb(64, 157, 64);}
+
+@media All  and (min-width:641px) and (max-width:1025px)
+{
+  .rightSide,.leftSide{
+    margin-left: 0;
+    width: 50%;
+  }
+  .pageDivide{
+  margin: 0;
+  }
+}
+@media All and (max-width:640px)
+{
+  .leftSide{
+    display: none;
+  }
+  .rightSide,.leftSide{
+    width: 90%;
+  }
+  .loginBtn,.registerBtn{ 
+    margin-left: 1em;
+  }
+  .btn,.abutton{
+    font-size: 1em;
+  }
+}

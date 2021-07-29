@@ -3,6 +3,7 @@ import router from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Header from '../../components/Header';
+import styles from '../../components/LoginAndRegister.module.css';
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -11,7 +12,6 @@ export default function Register() {
     password: '',
     confirmPassword: '',
   });
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,74 +46,73 @@ export default function Register() {
 
       <h2> Register </h2>
 
-      <div className="page-divide">
-        <img src="/images/registerImage.png" alt="Image of a coder working" className="left-side" />
+      <div className={styles.pageDivide}>
+        <img src="/images/registerImage.png" alt="Image of a coder working" className={styles.leftSide} />
 
-        <div className="register right-side">
-          
+        <div className={`${styles.register} ${styles.rightSide}`}>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-group ">
+            <div>
               <label htmlFor="name">
                 Name
                 <input
                   type="name"
                   id="name"
                   name="name"
-                  className="form-control login-form"
+                  className={styles.registerForm}
                   defaultValue={user.name}
                   required
                 />
               </label>
             </div>
 
-            <div className="form-group ">
+            <div>
               <label htmlFor=" email">
                 Email
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="form-control login-form"
+                  className={styles.registerForm}
                   defaultValue={user.email}
                   required
                 />{' '}
               </label>
             </div>
 
-            <div className="form-group">
+            <div>
               <label htmlFor="password">
                 Password
                 <input
                   type="password"
                   id="password"
                   name="password"
-                  className="form-control login-form"
+                  className={styles.registerForm}
                   defaultValue={user.password}
                   required
                 />
               </label>
             </div>
 
-            <div className="form-group ">
+            <div>
               <label htmlFor="confirmPassword">
                 Confirm Password
                 <input
                   type="password"
                   id="confirmPassword"
                   name="confirmPassword"
-                  className="form-control login-form"
+                  className={styles.registerForm}
                   defaultValue={user.confirmPassword}
                   required
                 />
               </label>
             </div>
 
-            <div className="center">
-              <button type="submit" className="btn green register-btn">
+            <div className={styles.center}>
+              <button type="submit" className={`${styles.btn} ${styles.green} ${styles.registerBtn}`}>
                 Register
               </button>
               <Link href="/">
-                <a className="abutton grey">Cancel</a>
+                <a className={`${styles.abutton} ${styles.grey}`}>Cancel</a>
               </Link>
             </div>
           </form>

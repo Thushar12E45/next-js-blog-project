@@ -4,6 +4,7 @@ import router from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Header from '../../components/Header';
+import styles from '../../components/LoginAndRegister.module.css';
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -45,12 +46,12 @@ export default function Login() {
       <Header />
       <h2> Login</h2>
 
-      <div className="page-divide">
-        <img src="/images/loginImage.png" alt="Image of a coder working" className="left-side" />
+      <div className={styles.pageDivide}>
+        <img src="/images/loginImage.png" alt="Image of a coder working" className={styles.leftSide} />
 
-        <div className="right-side login">
+        <div className={`${styles.rightSide} ${styles.login}`}>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-group  ">
+            <div>
               <label htmlFor="email">
                 {' '}
                 Email
@@ -58,14 +59,14 @@ export default function Login() {
                   type="email"
                   id="email"
                   name="email"
-                  className="form-control  login-form"
+                  className={styles.loginForm}
                   defaultValue={user.email}
                   required
                 />
               </label>
             </div>
 
-            <div className="form-group">
+            <div>
               <label htmlFor="password">
                 {' '}
                 Password
@@ -73,19 +74,19 @@ export default function Login() {
                   type="password"
                   id="password"
                   name="password"
-                  className="form-control login-form"
+                  className={styles.loginForm}
                   defaultValue={user.email}
                   required
                 />
               </label>
             </div>
 
-            <div className="center">
-              <button type="submit" className="btn blue login-btn">
+            <div className={styles.center}>
+              <button type="submit" className={`${styles.btn} ${styles.blue} ${styles.loginBtn}`}>
                 Login
               </button>
               <Link href="/">
-                <a className="abutton grey">Cancel</a>
+                <a className={`${styles.abutton} ${styles.grey}`}>Cancel</a>
               </Link>
             </div>
           </form>
