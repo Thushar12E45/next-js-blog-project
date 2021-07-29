@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import router from 'next/router';
-import { useState } from 'react';
-import Cookies from 'universal-cookie';
+
 import Date from './date';
 
-export default function ArticleCards({ article, handleDelete, errorMessage }) {
+export default function ArticleCards({ article, handleDelete }) {
   const editArticle = (e) => {
     e.preventDefault();
     router.push(`/user/edit/${article.id}`);

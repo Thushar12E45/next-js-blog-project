@@ -1,12 +1,9 @@
-// import { useState } from 'react';
 import { mutate } from 'swr';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
 import ArticleCards from './ArticleCards';
 
 export default function ArticleGrid({ data }) {
-  /* const [allArticleData, setAllArticleData] = useState(data); */
-
   const handleDeleteArticle = async (id, title) => {
     const cookies = new Cookies();
     const token = cookies.get('jwtToken');
