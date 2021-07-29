@@ -1,6 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
 import useSWR from 'swr';
+import styles from './SearchBar.module.css';
 
 export default function SearchBar({ searchData, handleSearch }) {
   const [keyword, setKeyword] = useState(() => searchData.keyword);
@@ -14,7 +15,6 @@ export default function SearchBar({ searchData, handleSearch }) {
   if (error) return <div>Failed to fetch author list</div>;
   if (!data) return <div> </div>;
 
-  console.log(data);
   const handleSearchClick = async (event) => {
     event.preventDefault();
     handleSearch({
@@ -26,12 +26,12 @@ export default function SearchBar({ searchData, handleSearch }) {
 
   return (
     <form onSubmit={(e) => handleSearchClick(e)}>
-      <div className=" search ">
+      <div className={styles.search}>
         <input
           type="text"
           name="keyword"
           id="keyword"
-          className="search-input"
+          className={styles.searchInput}
           placeholder="Search by keyword"
           defaultValue={keyword}
           onChange={(e) => {
@@ -39,7 +39,7 @@ export default function SearchBar({ searchData, handleSearch }) {
           }}
         />
 
-        <button type="submit" className="search-icon">
+        <button type="submit" className={styles.searchIcon}>
           <span>
             <FaSearch />
           </span>
@@ -48,7 +48,7 @@ export default function SearchBar({ searchData, handleSearch }) {
         <select
           id="author"
           name="author"
-          className="search-input"
+          className={styles.searchInput}
           value={author}
           onChange={(e) => {
             setAuthor(e.target.value);
@@ -62,7 +62,7 @@ export default function SearchBar({ searchData, handleSearch }) {
           ))}
         </select>
 
-        <div className="sort">
+        <div className={styles.sort}>
           <label htmlFor="sortType">
             Sort by:
             <input
@@ -84,7 +84,7 @@ export default function SearchBar({ searchData, handleSearch }) {
           </label>
         </div>
 
-        <button type="submit" className="search-button">
+        <button type="submit" className={styles.searchButton}>
           Go
         </button>
       </div>
