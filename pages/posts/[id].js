@@ -15,7 +15,7 @@ export default function Article() {
   if (!data) return <div>loading...</div>;
 
   const article = data;
-  const imagePath = `/images/uploads/${article.id}.jpeg`;
+  const imagePath = `https://mixd-blog.herokuapp.com/images/${article.id}.jpeg`;
 
   return (
     <>
