@@ -1,0 +1,29 @@
+.articleSection{
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0.5em;
+  justify-content: space-between;
+  box-shadow: 0 0 6px #888888;
+  width: 260px;
+}
+
+.spanBtn{
+  border: none;
+  margin-top: 0.5em;
+  background-color: white;
+  font-size: 1.1em;
+}
+@media All  and (min-width:641px) and (max-width:1023px)
+{
+  .articleSection{
+    width: 90%;
+  }
+}
+@media All and (max-width:640px)
+{
+  .articleSection{
+    width: 90%;
+  }
+}

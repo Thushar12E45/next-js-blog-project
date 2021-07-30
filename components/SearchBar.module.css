@@ -43,6 +43,7 @@
 @media All  and (min-width:641px) and (max-width:1023px)
 {
   .search{
+    margin-left:1em;
     width: 85%;
     flex-wrap: wrap;
     gap: 10px;

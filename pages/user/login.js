@@ -3,8 +3,10 @@ import Cookies from 'universal-cookie';
 import router from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 import Header from '../../components/Header';
 import styles from '../../components/LoginAndRegister.module.css';
+import loginImage from '../../public/images/loginImage.png';
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -47,7 +49,9 @@ export default function Login() {
       <h2> Login</h2>
 
       <div className={styles.pageDivide}>
-        <img src="/images/loginImage.png" alt="Image of a coder working" className={styles.leftSide} />
+        <div className={styles.leftSide}>
+          <Image src={loginImage} alt="Image of a coder working" />
+        </div>
 
         <div className={`${styles.rightSide} ${styles.login}`}>
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -92,7 +96,7 @@ export default function Login() {
           </form>
           <h5>
             <Link href="/user/register">
-              <a className="center">Need an account?</a>
+              <a>Need an account?</a>
             </Link>
           </h5>
         </div>

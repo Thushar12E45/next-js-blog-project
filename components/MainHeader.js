@@ -11,10 +11,10 @@ const handleLogout = () => {
   localStorage.setItem('isLogged', false);
   router.push(`/`);
 };
-const handleHomeRoute = () => {
-  window.location.reload();
+const handleHomeRoute = (setUrl) => {
+  setUrl('https://mixd-blog.herokuapp.com/api/posts');
 };
-export default function Header() {
+export default function Header({ setUrl }) {
   const Router = useRouter();
 
   return (
@@ -42,7 +42,7 @@ export default function Header() {
             {Router.asPath !== '/' ? (
               <Link href="/">Home</Link>
             ) : (
-              <button type="button" onClick={handleHomeRoute}>
+              <button type="button" onClick={() => handleHomeRoute(setUrl)}>
                 Home
               </button>
             )}

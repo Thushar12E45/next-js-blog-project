@@ -1,0 +1,15 @@
+.readArticle{
+  background-color: white;
+  border-radius: 0.5em;
+  padding: 1em;
+  margin: 1em;
+  }
+
+.readArticle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: 80% 20%;
+}
+

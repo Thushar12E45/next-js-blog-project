@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import router from 'next/router';
-
 import Date from './date';
+import styles from './ArticleCards.module.css';
 
 export default function ArticleCards({ article, handleDelete }) {
   const editArticle = (e) => {
@@ -17,11 +17,9 @@ export default function ArticleCards({ article, handleDelete }) {
 
   const imagePath = `https://mixd-blog.herokuapp.com/images/${article.id}.jpeg`;
   return (
-    <div className="article-section">
+    <div className={styles.articleSection}>
       <div>
-        <div className="img-container">
-          <Image src={imagePath} height={256} width={300} layout="intrinsic" />
-        </div>
+        <Image src={imagePath} height={256} width={280} layout="intrinsic" alt="Cover Image" />
 
         <h3>
           {' '}
@@ -38,11 +36,11 @@ export default function ArticleCards({ article, handleDelete }) {
         <span> {article.userTable.name} </span>
         {localStorage.getItem('isLogged') === 'true' ? (
           <div>
-            <button className="span-btn" type="button" name="edit" onClick={(e) => editArticle(e)}>
+            <button className={styles.spanBtn} type="button" name="edit" onClick={(e) => editArticle(e)}>
               <span> Edit </span>
             </button>
             |
-            <button className="span-btn" type="button" name="delete" onClick={(e) => deleteArticle(e)}>
+            <button className={styles.spanBtn} type="button" name="delete" onClick={(e) => deleteArticle(e)}>
               <span> Delete </span>
             </button>
           </div>

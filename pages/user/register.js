@@ -2,8 +2,10 @@ import Link from 'next/link';
 import router from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 import Header from '../../components/Header';
 import styles from '../../components/LoginAndRegister.module.css';
+import registerImage from '../../public/images/registerImage.png';
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -47,7 +49,9 @@ export default function Register() {
       <h2> Register </h2>
 
       <div className={styles.pageDivide}>
-        <img src="/images/registerImage.png" alt="Image of a coder working" className={styles.leftSide} />
+        <div className={styles.leftSide}>
+          <Image src={registerImage} alt="Image of a coder working" />
+        </div>
 
         <div className={`${styles.register} ${styles.rightSide}`}>
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -118,7 +122,7 @@ export default function Register() {
           </form>
           <h5>
             <Link href="/user/login">
-              <a className="center"> Have an account?</a>
+              <a> Have an account?</a>
             </Link>
           </h5>
         </div>

@@ -1,35 +1,43 @@
 import { useRouter } from 'next/router';
+import styles from './ArticleInputForm.module.css';
 
 export default function ArticleInputForm({ article }) {
   const Router = useRouter();
   const checkLocation = Router.pathname === '/user/edit/[id]';
   return (
     <>
-      <div className="form-group ">
+      <div>
         <input
           required
           type="text"
           name="title"
           id="title"
-          className="input-form"
+          className={`${styles.inputForm}`}
           placeholder="Enter your title here"
           defaultValue={checkLocation ? article.title : ''}
         />
       </div>
       <div>
-        <label htmlFor="img" className="img-upload">
+        <label htmlFor="img" className={`${styles.imgUpload}`}>
           {checkLocation ? 'Update ' : 'Upload '}
           image :
-          <input type="file" id="img" name="img" accept="image/*" className="img-upload" required={!checkLocation} />
+          <input
+            type="file"
+            id="img"
+            name="img"
+            accept="image/*"
+            className={`${styles.imgUpload}`}
+            required={!checkLocation}
+          />
         </label>
       </div>
-      <div className="form-group">
+      <div>
         <textarea
           required
           type="text"
           name="markdown"
           id="markdown"
-          className="input-form markdown "
+          className={`${styles.inputForm} ${styles.markdown}`}
           placeholder="Write your article( in markdown )"
           defaultValue={checkLocation ? article.markdown : ''}
         />

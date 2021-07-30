@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { FaArrowLeft } from 'react-icons/fa';
 import Link from 'next/link';
 import Header from '../../components/MainHeader';
+import styles from '../../styles/[id].module.css';
 
 export default function Article() {
   const Router = useRouter();
@@ -22,16 +23,14 @@ export default function Article() {
   return (
     <>
       <Header />
-      <div className="read-article">
+      <div className={styles.readArticle}>
         <h2>{article.title.toUpperCase()}</h2>
         <div className="center">
           by &nbsp;
           <span> {article.userTable.name.toUpperCase()} </span>
         </div>
 
-        <div className="img-container read">
-          <Image src={imagePath} height={256} width={1000} />
-        </div>
+        <Image src={imagePath} height={256} width={1000} alt="Cover Image" />
         <p dangerouslySetInnerHTML={{ __html: marked(article.markdown) }} />
         <Link href="/">
           <a className="center">

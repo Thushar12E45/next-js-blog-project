@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header setUrl={setUrl} />
       <SearchBar searchData={searchData} handleSearch={handleSearch} />
       {data.length ? <ArticleGrid data={data} /> : <h3>Article not found</h3>}
     </>

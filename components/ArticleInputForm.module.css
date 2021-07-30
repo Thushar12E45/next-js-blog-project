@@ -1,0 +1,18 @@
+.inputForm{
+  width: 76vw;
+  margin: 1em;
+  border-radius: 0.5em;
+  padding: 1em;
+ }
+ .imgUpload{
+  margin-left: 1em;
+}
+.markdown{
+  height: 250px;
+}
+
+@media All and (max-width:640px){
+  .input-form{
+    width: 80vw;
+   }
+}
