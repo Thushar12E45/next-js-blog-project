@@ -26,11 +26,11 @@ export default function NewArticle() {
       method: 'POST',
     });
     const newArticle = await submittedData.json();
+    router.push(`/posts/${newArticle.id}`);
     toast.success(`New article ${newArticle.title} created successfully`, {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 5000,
     });
-    router.push(`/posts/${newArticle.id}`);
   };
 
   return (
