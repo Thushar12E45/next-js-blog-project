@@ -22,3 +22,4 @@ npm install
 1. HTML5 and CSS
 2. React
 3. Next.js
+4. Prisma
