@@ -1,6 +1,6 @@
 # Blog PRoject using Next.js
 
-## [Demo](https://next-js-blog-project-five.vercel.app/)
+# [Demo](https://next-js-blog-project-five.vercel.app/)
 
 # Introduction
 In this project we have created blog website from React and Next.js using the server from [here](https://mixd-blog.herokuapp.com/).
